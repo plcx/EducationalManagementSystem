@@ -35,17 +35,17 @@ public class StudentController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/delete")
-    public ModelAndView delete(@RequestParam Integer id){
-        Integer i = studentService.delete(id);
-        ModelAndView modelAndView = new ModelAndView("redirect:list");
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/insert")
     public ModelAndView insert(Student Student){
         System.out.println(Student);
         Integer i = studentService.insert(Student);
+        ModelAndView modelAndView = new ModelAndView("redirect:list");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/delete")
+    public ModelAndView delete(@RequestParam Integer id){
+        Integer i = studentService.delete(id);
         ModelAndView modelAndView = new ModelAndView("redirect:list");
         return modelAndView;
     }
@@ -89,12 +89,11 @@ public class StudentController {
 //            return "no";
 //        }
 //    }
-//
-//    /**
-//     * 登录检查
-//     */
+
+    /**
+     * 登录检查
+     */
 //    @RequestMapping(value = "/loginCheck")
-////    public void loginCheck(@RequestParam("Studentname")String Studentname,@RequestParam("password")String password){
 //    public ModelAndView loginCheck(Student Student, HttpSession httpSession){
 //        //将前端送入的多个字段封装为Student对象传递给service调用,返回的是数据库中的oneByStudent对象
 //        Student oneByStudent = StudentService.findOneByStudent(Student);
@@ -108,12 +107,12 @@ public class StudentController {
 //        System.out.println("用户登录检查");
 //        return modelAndView;
 //    }
-//
-//    @RequestMapping(value = "/logout")
-//    public String logout(HttpSession httpSession){
-//        //httpSession.setAttribute("Student_SESSION",null);//清空用户相关的session
-//        httpSession.invalidate();//使session失效
-//        //退出登录后,将页面重新定向到login
-//        return "redirect:/Student/login";
-//    }
+
+    @RequestMapping(value = "/logout")
+    public String logout(HttpSession httpSession){
+        //httpSession.setAttribute("Student_SESSION",null);//清空用户相关的session
+        httpSession.invalidate();//使session失效
+        //退出登录后,将页面重新定向到login
+        return "redirect:/Student/login";
+    }
 }
