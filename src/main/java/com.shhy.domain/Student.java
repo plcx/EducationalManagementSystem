@@ -3,8 +3,8 @@ package com.shhy.domain;
 import java.io.Serializable;
 
 public class Student implements Serializable {
-    private Integer sid;
-    private String password;
+    private Integer sid;//无需输入数据库自动生成id，修改功能不能修改id
+    private String password;//初始密码123456
     private String sname;
     private String sex;
     private Integer age;
